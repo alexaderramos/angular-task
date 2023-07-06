@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,30 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular-task';
+  title = 'Mis tareas';
+  tasks: string[];
+
+  error: boolean;
+  error_message: string;
+
+  constructor() {
+    this.error = false;
+    this.tasks = []
+    this.error_message = ''
+  }
+
+
+  agregar(value: string) {
+
+    let nombre =  value ?? ''
+
+    if (!nombre){
+      this.error = true;
+      this.error_message = 'Verifique el texto ingresado'
+    }else{
+
+      this.tasks.push(value)
+
+    }
+  }
 }
